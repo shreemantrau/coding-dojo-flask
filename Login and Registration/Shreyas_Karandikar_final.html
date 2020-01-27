@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">  -->
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+    <title>Email Validation</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        {% with messages = get_flashed_messages(category_filter=["emailError"]) %}
+        {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                <li>{{message}}</li>
+            </ul>
+        </div>
+        {% endfor %}
+        <form action='/' method='post'>
+            <input type='submit' name='reset' class="btn btn-default navbar-btn" value='Try again'>
+        </form>
+        {% endif %}
+        {% endwith %}
+
+
+
+        {% with messages = get_flashed_messages(category_filter=["success"]) %}
+        {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-success" role="alert">
+            <ul>
+                <li>{{message}}</li>
+            </ul>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <table>
+            {% for email in emails: %}
+
+            <tr>
+                <td>
+                    <div class="panel panel-default">
+                        <form action="/delete", method="POST">
+                        <div class="panel-body">
+                            Email: {{ email['email_id']}} <input type='hidden' name='pk' value="{{email['id']}}">
+                            <input type='submit' value='Delete'>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+    </div>
+    {% endfor %}
+    </table>
+    </div>
+</body>
+
+</html>
