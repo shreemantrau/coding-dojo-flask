@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}"> -->
+    <title>Dojo Validation</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <form action="/result" method="POST">
+                Your Name: <input type="text" name="name"><br>
+                Dojo Location: <select name="location" id="">
+                    <option value="CA">CA</option>
+                    <option value="TX">TX</option>
+                    <option value="WA">WA</option>
+                </select><br>
+
+                Favorite Language: <select name="language">
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JS</option>
+                    <option value="C++">C++</option>
+                    <option value="C">C</option>
+                </select>
+
+                <p>Comment (Opptional):</p>
+                <textarea name="comment" cols="30" rows="10"></textarea><br>
+                <input type="submit" value="Button">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
